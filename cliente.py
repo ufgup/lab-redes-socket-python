@@ -1,4 +1,5 @@
 #!/usr/bin/python
+__author__ = 'daniel.melo'
 import socket
 
 HOST = '127.0.0.1'     # Endereco IP do Servidor
@@ -12,7 +13,10 @@ print 'Para sair use CTRL+X\n'
 
 msg = raw_input()
 while msg <> '\x18':
-    tcp.send (msg)
+    tcp.send(msg)
+    data = tcp.recv(4096)
+    print "Resposta:" + str(data)
     msg = raw_input()
+
 
 tcp.close()
